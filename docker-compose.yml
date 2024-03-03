@@ -1,0 +1,7 @@
+services:
+  backend:
+    container_name: coin_library_backend
+    build:
+      context: ./
+    ports:
+      - "9010:8080"
