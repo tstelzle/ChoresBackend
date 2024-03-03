@@ -1,6 +1,6 @@
 services:
   backend:
-    container_name: coin_library_backend
+    container_name: chores_backend
     build:
       context: ./
     ports:
