@@ -48,15 +48,16 @@ public class ChoreService {
         }
     }
 
+    public void decreaseCurrentIntervalForChore(Chore chore) {
+        chore.setInterval(chore.getInterval() - 1);
+        choreRepository.save(chore);
+    }
+
     public void decreaseCurrentIntervalForEveryChore() {
-        List<Chore> chores = choreRepository.findAll();
+        List<Chore> chores = choreRepository.findByCurrentIntervalGreaterThan(0);
 
         for (Chore chore : chores) {
-            int currentInterval = chore.getCurrentInterval();
-            if (currentInterval > 0 ) {
-                chore.setCurrentInterval(currentInterval - 1);
-                choreRepository.save(chore);
-            }
+            decreaseCurrentIntervalForChore(chore);
         }
     }
 }
